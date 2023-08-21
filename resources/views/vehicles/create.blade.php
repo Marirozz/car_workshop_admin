@@ -32,6 +32,27 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <select 
+                        name="type" 
+                        class="form-control" 
+                        value="{{ old('type') }}" 
+                        id="type">
+                        <option value="autobus">Autobus</option>
+                        <option value="camion">Camión</option>
+                        <option value="carro">Carro</option>
+                        <option value="furgoneta">Furgoneta</option>
+                        <option value="jeep">Jeep</option>
+                        <option value="jeepeta">Jeepeta</option>
+                    </select>
+                    @error('type')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="brand_id">Marca</label>
                     <select 
                         name="brand_id" 
@@ -50,6 +71,7 @@
                     </span>
                     @enderror
                 </div>
+
 
                 <div class="form-group">
                     <label for="car_model_id">Modelo</label>

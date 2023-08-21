@@ -14,7 +14,11 @@
 
             <div class="form-group">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name"
+                <input 
+                    type="text" 
+                    name="name" 
+                    class="form-control 
+                    @error('name') is-invalid @enderror" id="name"
                     placeholder="nombre" value="{{ old('name', $product->name) }}">
                 @error('name')
                 <span class="invalid-feedback" role="alert">

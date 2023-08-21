@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\Maintenance;
 use App\Models\Reservation;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -29,7 +31,14 @@ class ReservationController extends Controller
     {
         $customers = Customer::all();
         $employees = Employee::all();
-        return view('reservations.create')->with(['customers' => $customers, 'employees' => $employees]);
+        $maintenances=Maintenance::all();
+        $vehicles = Vehicle::all();
+        
+        return view('reservations.create')->with([
+            'customers' => $customers, 
+            'employees' => $employees, 
+            'vehicles' => $vehicles,
+            'maintenances' => $maintenances]);
     }
 
     /**
@@ -43,9 +52,12 @@ class ReservationController extends Controller
         $data["type"] = $request->input('type') ? $request->input('type') : null;
         $data["date"] = $request->input('date') ? $request->input('date') : null;
         $data["details"] = $request->input('details') ? $request->input('details') : null;
-        $data["location"] = $request->input('location') ? $request->input('location') : null;
+        $data["maintenance_id"] = $request->input('maintenance_id') ? $request->input('maintenance_id') : null;
+        $data["vehicle_id"]=$request->input('vehicle_id')?$request->input('vehicle_id'):null;
         $data["customer_id"] = $request->input('customer_id') ? $request->input('customer_id') : null;
         $data["employee_id"] = $request->input('employee_id') ? $request->input('employee_id') : null;
+        $data["statu"] = $request->input('statu') ? $request->input('statu') : null;
+
         
 
         $reservation = Reservation::create($data);
@@ -77,8 +89,16 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         $customers = Customer::all();
-        $employees = Employee::all();
-        return view('reservations.edit')->with(['reservation' => $reservation, 'customers' => $customers, 'employees' => $employees]);
+        $employees = Employee::all(); 
+        $maintenances = Maintenance::all();
+        $vehicles = Vehicle::all();
+
+        return view('reservations.edit')->with([
+            'reservation' => $reservation, 
+            'customers' => $customers, 
+            'employees' => $employees, 
+            'vehicles'=>$vehicles,
+            'maintenances'=> $maintenances]);
     }
 
     /**

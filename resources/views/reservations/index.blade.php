@@ -17,9 +17,12 @@
                     <th>ID</th>
                     <th>Tipo</th>
                     <th>Fecha</th>
-                    <th width="250px">Detalles</th>
+                    <th>Vehiculo</th>
+                    <th width="200px">Detalles</th>
+                    <th>Mantenimiento</th>
                     <th>Cliente</th>
                     <th>Empleado asignado</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -29,9 +32,13 @@
                     <td>{{$reservation->id}}</td>
                     <td>{{$reservation->type}}</td>
                     <td>{{$reservation->date}}</td>
+                    <td>{{$reservation->vehicle?->brand->name.' '.$reservation->vehicle?->carModel->name.' '.$reservation->vehicle?->license_plate}}</td>
                     <td>{{$reservation->details}}</td>
-                    <td>{{$reservation->customer?->first_name.' '.$reservation->customer?->last_name}}</td>
-                    <td>{{$reservation->employee?->first_name.' '.$reservation->employee?->last_name}}</td>
+                    <td>{{$reservation->maintenance->name}}</td>
+                    <td>{{$reservation->customer->first_name.' '.$reservation->customer->last_name}}</td>
+                    <td>{{$reservation->employee->first_name.' '.$reservation->employee->last_name}}</td>
+                    <td>{{$reservation->status}}</td>
+
                     <td>
                         <a href="{{ route('reservations.edit', $reservation) }}" class="btn btn-primary"><i
                                 class="fas fa-edit"></i></a>

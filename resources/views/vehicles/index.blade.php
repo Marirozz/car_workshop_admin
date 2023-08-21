@@ -17,6 +17,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Cliente</th>
+                    <th>Tipo</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Año</th>
@@ -24,7 +25,6 @@
                     <th>Ficha</th>
                     <th>Kilometraje</th>
                     <th>Creado</th>
-                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,20 +32,16 @@
                 <tr>
                     <td>{{$vehicle->id}}</td>
                     <td>{{$vehicle->customer->first_name.' '.$vehicle->customer->last_name}}</td>
+                    <td>{{$vehicle->type}}</td>
                     <td>{{$vehicle->brand->name}}</td>
                     <td>{{$vehicle->carModel->name}}</td>
                     <td>{{$vehicle->year}}</td>
                     <td>{{$vehicle->license_plate}}</td>
-                    <td>{{$vehicle->mileage}}</td>
                     <td>{{$vehicle->token}}</td>
+                    <td>{{$vehicle->mileage}}</td>
                     <td>{{$vehicle->created_at}}</td>
                     <td>
-                        <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('vehicles.destroy', $vehicle) }}" method="post" class="d-inline-block">
-                            <button class="btn btn-danger btn-delete" data-url="{{route('vehicles.destroy', $vehicle)}}"><i class="fas fa-trash"></i></button>
-                            <input type="hidden" name="_method" value="delete" />
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        </form>
+                    
                     </td>
                 </tr>
                 @endforeach

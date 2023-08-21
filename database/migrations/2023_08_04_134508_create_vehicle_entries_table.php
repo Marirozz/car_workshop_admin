@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles_entries', function (Blueprint $table) {
+        Schema::create('vehicle_entries', function (Blueprint $table) {
             $table->id();
-            $table->text('detail');
-            $table->string('mileage');
+            $table->text('details');
+            $table->numeric('traveled');
+            $table->string('typeTraveled');
             $table->date('entry_date');
             $table->date('departure_date');
+            $table->foreignId('customer_id')->constrained();
             $table->foreignId('vehicle_id')->constrained();
             $table->foreignId('maintenance_id')->constrained();
             $table->foreignId('employee_id')->constrained();
+            $table->foreignId('reservation_id')->constrained();
             $table->timestamps();
             
 
@@ -36,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles_entries');
+        Schema::dropIfExists('vehicle_entries');
     }
 };

@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('maintenances.index') }}" class="nav-link {{ activeSegment('reservations') }}">
+                    <a href="{{ route('maintenances.index') }}" class="nav-link {{ activeSegment('maimtenances') }}">
                         <i class="nav-icon fa-solid fa-calendar-check"></i>
                         <p>Registro Mantenimientos</p>
                     </a>
@@ -62,6 +62,12 @@
                     <a href="{{ route('vehicles.index') }}" class="nav-link {{ activeSegment('vehicles') }}">
                         <i class="nav-icon fa-solid fa-car"></i>
                         <p>Vehiculos</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('vehicle_entries.index') }}" class="nav-link {{ activeSegment('vehicle_entries') }}">
+                        <i class="nav-icon fa-solid fa-car"></i>
+                        <p>Entrada Vehiculos</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">

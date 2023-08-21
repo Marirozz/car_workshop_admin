@@ -24,14 +24,15 @@ class VehicleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => 'required|string|max:20',
-            'type'=>'required',
-            'brand_id' => 'required|string|max:20',
-            'car_model_id' => 'required|string|max:20',
-            'year' => 'required|numeric',
-            'license_plate' => 'required|string|max:7',
-            'token' => 'nullable|string|max:5',
-            'mileage' => 'required|numeric',
+            'type' => 'required|string|max:20', 
+            'date' => 'required|date', 
+            'details' => 'required|string|max:20', 
+            'maintenance_id' => 'numeric',
+            'vehicle_id'=>'required|numeric',
+            'statu' => 'required|string|max:20', 
+            'customer_id'=>'required|numeric', 
+            'employee_id'=> 'required|numeric',     
+            
         ];
     }
 }

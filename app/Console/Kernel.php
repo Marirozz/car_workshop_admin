@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,6 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+
+        'App\Console\Commands\EmailSend',
         //
     ];
 
@@ -24,9 +29,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-    }
+        $schedule->command('email:send')->everyMinute();
 
+            
+            // $customers = Customer::pluck('email'); // Obtén todas las direcciones de correo electrónico
+            // foreach ($customers as $email) {
+            //     Mail::to($email)->send(new MaintenanceMailable());
+            //     // \Illuminate\Support\Facades\Mail::to($email)->send(new MaintenanceMailable());
+            // }
+        //    Mail::to(users:'mariesmeraldad@gmail.com')->send(new MaintenanceMailable());
+           
+        //    Mail::to(users:'marianapretty53@gmail.com')->send(new MaintenanceMailable);
+
+        
+    }
+   
     /**
      * Register the commands for the application.
      *

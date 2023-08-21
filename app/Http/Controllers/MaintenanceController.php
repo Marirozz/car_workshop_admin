@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MaintenanceStoreRequest;
 use App\Models\Brand;
 use App\Models\CarModel;
 use App\Models\Maintenance;
-use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\MaintenanceStoreRequest;
 
 class MaintenanceController extends Controller
 {
@@ -36,13 +34,12 @@ class MaintenanceController extends Controller
     public function create()
     {
         return view('maintenances.create', [
-            "customers" => Customer::all(),
             "brands" => Brand::all(),
             "car_models" => CarModel::all(),
         ]);
     }
 
-  
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,11 +53,13 @@ class MaintenanceController extends Controller
             'name' => $request->name,
             'type' => $request->type,
             'cost' => $request->cost,
-            'frecuency' => $request->frecuency,
-            'duration,' => $request->duration,
+            'typeFrequency' => $request->typeFrequency,
+            'frequency' => $request->frequency,
+            'monthsFrequency' => $request->monthsFrequency,
+            'duration' => $request->duration,
             'brand_id' => $request->brand_id,
             'car_model_id' => $request->car_model_id,
-            
+
         ]);
 
         if (!$maintenance) {
@@ -69,21 +68,20 @@ class MaintenanceController extends Controller
         return redirect()->route('maintenances.index')->with('success', 'Success, your Maintenance have been created.');
     }
 
-    
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Maintenance $maintenance
      * @return \Illuminate\Http\Response
      */
-    public function edit(maintenance $maintenance)
-    {  
+    public function edit(Maintenance $maintenance)
+    {
         return view('maintenances.edit', [
             "brands" => Brand::all(),
             "car_models" => CarModel::all(),
-            "maintenance"=>$maintenance
+            "maintenance" => $maintenance
         ]);
-    
     }
 
     /**
@@ -98,11 +96,13 @@ class MaintenanceController extends Controller
         $maintenance->name = $request->name;
         $maintenance->type = $request->type;
         $maintenance->cost = $request->cost;
-        $maintenance->frecuency = $request->frecuency;
+        $maintenance->typeFrequency = $request->typeFrequency;
+        $maintenance->frequency = $request->frequency;
+        $maintenance->monthsFrequency = $request->monthsFrequency;
         $maintenance->duration = $request->duration;
         $maintenance->brand_id = $request->brand_id;
         $maintenance->car_model_id = $request->car_model_id;
-        
+
 
 
         if (!$maintenance->save()) {
@@ -113,7 +113,7 @@ class MaintenanceController extends Controller
 
     public function destroy(Maintenance $maintenance)
     {
-       
+
         $maintenance->delete();
 
         return redirect()->route('maintenances.index')->with('success', 'maintenance eliminado.');

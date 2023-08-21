@@ -30,14 +30,17 @@
 
                 <div class="form-group">
                     <label for="type">Tipo</label>
-                    <input 
-                    type="text" 
-                    name="type" 
-                    class="form-control @error('type') is-invalid @enderror" 
-                    id="type"
-                    placeholder="Tipo" 
-                    value="{{ old('type') }}"
-                />
+                    <select
+                        type="text" 
+                        name="type" 
+                        class="form-control @error('type') is-invalid @enderror" 
+                        id="type"
+                        placeholder="Tipo" 
+                        value="{{ old('type') }}">
+                        <option value="Regular">Regular</option>
+                        <option value="Premiun">Premiun</option>
+                        <option value="Normal">Normal</option>
+                    </select>
                     @error('type')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -49,7 +52,7 @@
                     <label for="cost">Costo</label>
                     <input 
                     type="number" 
-                    min="1"
+                    min=100
                     name="cost" 
                     class="form-control @error('cost') is-invalid @enderror" 
                     id="cost"
@@ -62,11 +65,27 @@
                     </span>
                     @enderror
                 </div>
-
                 <div class="form-group">
-                    <label for="frequency">Frecuencia</label>
+                    <label for="typeFrequency">Tipo Frecuencia</label>
+                    <select 
+                        name="typeFrequency" 
+                        class="form-control" 
+                        value="{{ old('typeFrequency') }}" 
+                        id="typeFrequency">
+                        <option value="millas">Millas</option>
+                        <option value="kilometros">Kilometros</option>
+                    </select>
+                    @error('typeFrequency')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">Frecuencia en recorrido</label>
                     <input 
-                    type="text" 
+                    type="number" 
                     name="frequency" 
                     class="form-control @error('frequency') is-invalid @enderror" 
                     id="frequency"
@@ -81,13 +100,31 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="duration">Duracion en Minutos</label>
+                    <label for="monthsFrequency">Frecuencia en meses</label>
                     <input 
-                    type="text" 
+                    type="number" 
+                    name="monthsFrequency" 
+                    class="form-control @error('monthsFrequency') is-invalid @enderror" 
+                    id="monthsFrequency"
+                    placeholder="Frecuencia dn meses" 
+                    value="{{ old('monthsFrequency') }}"
+                />
+                    @error('monthsFrequency')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duracion en minutos</label>
+                    <input 
+                    type="number" 
+                    min=10
                     name="duration" 
                     class="form-control @error('duration') is-invalid @enderror" 
                     id="duration"
-                    placeholder="Duracion" 
+                    placeholder="Duracion en minutos" 
                     value="{{ old('duration') }}"
                 />
                     @error('duration')
@@ -96,6 +133,7 @@
                     </span>
                     @enderror
                 </div>
+
 
                 <div class="form-group">
                     <label for="brand_id">Marca</label>

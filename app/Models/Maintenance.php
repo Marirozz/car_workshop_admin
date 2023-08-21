@@ -10,18 +10,16 @@ class Maintenance extends Model
         'name',
         'type',
         'cost',
+        'typeFrequency',
         'frequency',
+        'monthsFrequency',
         'duration',
         'brand_id',
         'car_model_id',
         
     ];
 
-    public function customer()
-    {
-        return $this->belongsToMany(Customer::class);
-    }
-
+  
     public function brand()
     {
         return $this->belongsTo(Brand::class);

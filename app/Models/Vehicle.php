@@ -8,13 +8,15 @@ class Vehicle extends Model
 {
     protected $fillable = [
         'customer_id',
+        'type',
         'brand_id',
         'car_model_id',
         'year',
         'license_plate',
-        'token',
         'mileage',
+        
     ];
+  
 
     public function customer()
     {
@@ -30,5 +32,8 @@ class Vehicle extends Model
     {
         return $this->belongsTo(CarModel::class);
     }
+    public function vehicleEntries(){
 
+        return $this->hasMany(VehicleEntry::class);
+    }
 }

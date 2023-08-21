@@ -61,7 +61,7 @@
         
             <div class="form-group">
                 <label for="employee_id">Empleado</label>
-                <select name="employee_id" class="form-control" value="{{ old('employee_id', $reservation->employee_id) }}" id="servicioInput">
+                <select name="employee_id" class="form-control" value="{{ old('employee_id', $reservation->employee_id) }}" id="employee_id">
                     @foreach($employees as $employee)
                     <option value="{{$employee->id}}">{{$employee->first_name.' '.$employee->last_name}}</option>
                     @endforeach
@@ -72,7 +72,23 @@
                 </span>
                 @enderror
             </div>
-
+            <div class="form-group">
+                <label for="status">Estado</label>
+                <select 
+                    name="status" 
+                    class="form-control" 
+                    value="{{ old('status') }}" 
+                    id="status">
+                    <option value="Realizado">Realizado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+                @error('status')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
             <button class="btn btn-primary" type="submit">Actualizar</button>
         </form>
     </div>

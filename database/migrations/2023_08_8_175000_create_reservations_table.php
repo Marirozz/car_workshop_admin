@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string("type");
-            $table->string("date");
-            $table->string("location");
-            $table->string("details")->nullable();
+            $table->date("date");
+            $table->string("details");
+            $table->string("status");
             $table->foreignId('maintenance_id')->nullable()->references('id')->on('maintenances');
             $table->foreignId('customer_id')->constrained();
             $table->foreignId('employee_id')->constrained();
+            $table->foreignId('customer_id')->constrained();
             $table->timestamps();
         });
     }

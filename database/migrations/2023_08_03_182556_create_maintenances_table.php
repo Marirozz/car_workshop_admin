@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->float('cost');
+            $table->string('type_frequency');
             $table->string('frequency');
-            $table->string('duration');
+            $table->numeric('monthsFrequency');
+            $table->numeric('duration');
             $table->foreignId('brand_id')->constrained();
             $table->foreignId('car_model_id')->constrained();
             $table->timestamps();

@@ -32,17 +32,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="name">Tipo</label>
-                    <input 
+                    <label for="type">Tipo</label>
+                    <select
                         type="text" 
                         name="type" 
                         class="form-control @error('type') is-invalid @enderror" 
                         id="type"
                         placeholder="Tipo" 
-                        value="{{ old('type', $maintenance->type) }}"
-                        
-                    />
-
+                        value="{{ old('type') }}">
+                        <option value="regular">Regular</option>
+                        <option value="premiun">Premiun</option>
+                        <option value="normal">Normal</option>
+                    </select>
                     @error('type')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -71,9 +72,26 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="typeFrequency">Tipo Frecuencia</label>
+                    <select 
+                        name="typeFrequency" 
+                        class="form-control" 
+                        value="{{ old('typeFrequency') }}" 
+                        id="typeFrequency">
+                        <option value="millas">Millas</option>
+                        <option value="kilometros">Kilometros</option>
+                    </select>
+                    @error('typeFrequency')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="frequency">Frecuencia</label>
                     <input 
-                        type="text" 
+                        type="numeric" 
                         name="frequency" 
                         class="form-control @error('frequency') is-invalid @enderror" 
                         id="frequency"
@@ -91,9 +109,29 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="monthsFrequency">Frecuencia en meses</label>
+                    <input 
+                        type="numeric" 
+                        name="monthsFrequency" 
+                        class="form-control @error('monthsFrequency') is-invalid @enderror" 
+                        id="monthsFrequency"
+                        placeholder="Frecuencia en meses" 
+                        value="{{ old('monthsFrequency', $maintenance->monthsFrequency) }}"
+                        
+                        
+                    />
+
+                    @error('frequency')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="duration">Duracion</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         name="duration" 
                         class="form-control @error('duration') is-invalid @enderror" 
                         id="duration"

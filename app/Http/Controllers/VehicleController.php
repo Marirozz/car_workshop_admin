@@ -8,7 +8,7 @@ use App\Models\CarModel;
 use App\Models\Vehicle;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class VehicleController extends Controller
 {
@@ -40,6 +40,8 @@ class VehicleController extends Controller
             "brands" => Brand::all(),
             "car_models" => CarModel::all(),
         ]);
+      
+        
     }
 
   
@@ -52,8 +54,18 @@ class VehicleController extends Controller
     public function store(VehicleStoreRequest $request)
     {
 
+        $validator=Validator::make($request->all(),[
+            'license_plate'=>'required|unique:vehicles,license_plate',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $vehicle = Vehicle::create([
             'customer_id' => $request->customer_id,
+            'type'=>$request->type,
             'brand_id' => $request->brand_id,
             'car_model_id' => $request->car_model_id,
             'year' => $request->year,
@@ -62,6 +74,7 @@ class VehicleController extends Controller
             'mileage' => $request->mileage,
         ]);
 
+        
         if (!$vehicle) {
             return redirect()->back()->with('error', 'Sorry, there\'re a problem while creating Vehicle.');
         }
@@ -96,6 +109,7 @@ class VehicleController extends Controller
     public function update(Request $request, Vehicle $vehicle)
     {
         $vehicle->customer_id = $request->customer_id;
+        $vehicle->type = $request->type;
         $vehicle->brand_id = $request->brand_id;
         $vehicle->car_model_id = $request->car_model_id;
         $vehicle->year = $request->year;
