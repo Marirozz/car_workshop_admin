@@ -18,7 +18,7 @@ class Reservation extends Model
         'vehicle_id',
         'customer_id', 
         'employee_id',
-        'statu'
+        'status'
     ];
 
     protected $casts = ['date' => 'datetime'];
@@ -27,7 +27,7 @@ class Reservation extends Model
     {
         return $this->belongsTo(Customer::class);
     }
-    public function maintenance()
+     public function maintenance()
     {
         return $this->belongsTo(Maintenance::class);
     }

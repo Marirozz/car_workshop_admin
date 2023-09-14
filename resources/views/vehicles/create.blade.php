@@ -38,12 +38,12 @@
                         class="form-control" 
                         value="{{ old('type') }}" 
                         id="type">
-                        <option value="autobus">Autobus</option>
-                        <option value="camion">Camión</option>
-                        <option value="carro">Carro</option>
-                        <option value="furgoneta">Furgoneta</option>
-                        <option value="jeep">Jeep</option>
-                        <option value="jeepeta">Jeepeta</option>
+                        <option value="Autobus">Autobus</option>
+                        <option value="Camion">Camión</option>
+                        <option value="Carro">Carro</option>
+                        <option value="Furgoneta">Furgoneta</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Jeepeta">Jeepeta</option>
                     </select>
                     @error('type')
                     <span class="invalid-feedback" role="alert">

@@ -29,7 +29,7 @@ class VehicleStoreRequest extends FormRequest
             'details' => 'required|string|max:20', 
             'maintenance_id' => 'numeric',
             'vehicle_id'=>'required|numeric',
-            'statu' => 'required|string|max:20', 
+            'status' => 'required|string|max:20', 
             'customer_id'=>'required|numeric', 
             'employee_id'=> 'required|numeric',     
             

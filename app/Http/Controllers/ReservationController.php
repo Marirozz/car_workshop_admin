@@ -56,7 +56,7 @@ class ReservationController extends Controller
         $data["vehicle_id"]=$request->input('vehicle_id')?$request->input('vehicle_id'):null;
         $data["customer_id"] = $request->input('customer_id') ? $request->input('customer_id') : null;
         $data["employee_id"] = $request->input('employee_id') ? $request->input('employee_id') : null;
-        $data["statu"] = $request->input('statu') ? $request->input('statu') : null;
+        $data["status"] = $request->input('status') ? $request->input('status') : null;
 
         
 

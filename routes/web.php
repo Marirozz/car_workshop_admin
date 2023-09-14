@@ -16,6 +16,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VehicleEntryController;
 use illuminate\Support\Facades\Mail;
 use App\Mail\MaintenanceMailable;
+use Illuminate\Support\Facades\File;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -42,6 +43,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/cart/change-qty', [CartController::class, 'changeQty']);
     Route::delete('/cart/delete', [CartController::class, 'delete']);
     Route::delete('/cart/empty', [CartController::class, 'empty']);
+    Route::get('/pagos', function() {
+        return view('pagos', [
+          'imagen' => asset('img/Pagos.png')
+        ]);
+      })->name('pagos');
+
    
     
 });

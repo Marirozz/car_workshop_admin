@@ -36,7 +36,7 @@
                 <tr>
                     <td>{{$vehicle_entry->id}}</td>
                     <td>{{$vehicle_entry->customer->first_name.' '.$vehicle_entry->customer->last_name}}</td>
-                    <td>{{$vehicle_entry->vehicle?->brand->name.' '.$vehicle_entry->vehicle?->carModel->name.' '.$vehicle_entry->vehicle?->license_plate}}</td>
+                    <td>{{$vehicle_entry->vehicle?->type.' '. $vehicle_entry->vehicle?->brand->name.' '.$vehicle_entry->vehicle?->carModel->name.' '.$vehicle_entry->vehicle?->license_plate}}</td>
                     <td>{{$vehicle_entry->details}}</td>
                     <td>{{$vehicle_entry->traveled}}</td>
                     <td>{{$vehicle_entry->type_traveled}}</td>

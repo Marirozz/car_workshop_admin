@@ -26,7 +26,8 @@ return new class extends Migration
             $table->foreignId('car_model_id')->constrained();
             $table->timestamps();
         });
-    }
+    }return $query->whereHas('factura.vendedor', function ($query) use($term){
+        $query->where('id', $term);
 
     /**
      * Reverse the migrations.
